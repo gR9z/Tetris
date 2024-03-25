@@ -3,6 +3,7 @@ package com.codeineflow.mino;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import com.codeineflow.main.GamePanel;
 import com.codeineflow.main.KeyHandler;
 import com.codeineflow.main.PlayManager;
 
@@ -165,6 +166,7 @@ public class Mino {
 			}
 			
 			KeyHandler.upPressed = false;
+			GamePanel.se.play(3, false);
 		}
 
 		checkMovementCollision();
@@ -207,6 +209,9 @@ public class Mino {
 		}
 
 		if(bottomCollision) {
+			if(deactivating == false) {
+				GamePanel.se.play(4, false);
+			}
 			deactivating = true;
 		} else {
 			autoDropCounter++; // the counter increases in every frame
